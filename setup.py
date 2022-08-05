@@ -5,11 +5,11 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="datedays",
-    version="1.0.0",
+    version="2.1.5",
     author="liang1024",
     author_email="11751155@qq.com",
-    description="date-days",
-    long_description="date-days",
+    description="Welcome to install and use datedays",
+    long_description="Get the list of days,   For example:    ['2022-08-05','2022-08-06','2022-08-07', ...]。   pip install datedays",
     long_description_content_type="text/markdown",
     url="https://github.com/liang1024/datedays",
     packages=setuptools.find_packages(),

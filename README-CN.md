@@ -1,20 +1,18 @@
 # datedays
 
-[中文介绍文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
-
-datedays is available on PyPI:
+**pip安装使用**:
 
 ```console
 $ pip install datedays
 ```
 
-Get the list of days in the format "%Y-%m-%d"  
-When we want a lot of time This library can be used for this fixed format date array
+获取格式为“%Y-%m-%d”的天数列表  
+当我们需要很多时间时，这个库可以用于这个固定格式的日期数组
 
-For Example 1:
+例子1：
 
-**Get the required date quantity list（within 3 months by default）**  
-Test time 2022-08-05
+**获取所需日期数量列表（默认3个月内）**  
+测试时间2022-08-05
 
 ```
 import datedays
@@ -25,17 +23,19 @@ if __name__ == '__main__':
     print(datedays.getdays())
 ```
 
+运行结果：
+
 ```
 ['2022-08-05', '2022-08-06', '2022-08-07']
 ['2022-08-05', '2022-08-06', '2022-08-07', '2022-08-08', '2022-08-09', '2022-08-10', '2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14']
 ['2022-08-05', '2022-08-06', '2022-08-07', ..., '2022-11-29', '2022-11-30']
 ```
 
-For Example 2:  
+例子2：
 
-**Get the remaining days of the specified month,**  
-**```current_date=None```If the date is empty,**  
-**the current remaining days will be obtained**
+**获取指定月份的剩余天数，**  
+**`current_date=None`如果日期为空，**  
+**将获得当前剩余天数**
 
 ```
 import datedays
@@ -48,9 +48,9 @@ if __name__ == '__main__':
 ['2022-08-05', '2022-08-06',... '2022-08-30', '2022-08-31']
 ```
 
-For Example 3:
+例子3：
 
-**Return to the next month date list (automatically cross year)**
+**返回到下个月日期列表（自动跨年）**
 
 ```
 import datedays
