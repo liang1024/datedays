@@ -8,57 +8,31 @@ datedays is available on PyPI:
 $ pip install datedays
 ```
 
-Get the list of days in the format "%Y-%m-%d"  
-When we want a lot of time This library can be used for this fixed format date array
+Python Date Tools
+* It is automatically updated every time.  
+For example
+* all dates within 2 days to 10 days 
+* all dates of the next month.  
+Get the list of days in the format "%Y-%m-%d"    
 
-For Example 1:
+**For Example**:
 
-**Get the required date quantity list（within 3 months by default）**  
-Test time 2022-08-05
-
+all dates within 2 days to 10 days 
 ```
 import datedays
 
 if __name__ == '__main__':
-    print(datedays.getdays()[:3])  # Three days
-    print(datedays.getdays()[:10])  # Ten days
-    print(datedays.getdays())
+    print(datedays.getdays()[2:10]) 
+```
+output:
+```
+['2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14', '2022-08-15', '2022-08-16', '2022-08-17', '2022-08-18']
 ```
 
-```
-['2022-08-05', '2022-08-06', '2022-08-07']
-['2022-08-05', '2022-08-06', '2022-08-07', '2022-08-08', '2022-08-09', '2022-08-10', '2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14']
-['2022-08-05', '2022-08-06', '2022-08-07', ..., '2022-11-29', '2022-11-30']
-```
+other methods：
 
-For Example 2:  
-
-**Get the remaining days of the specified month,**  
-**```current_date=None```If the date is empty,**  
-**the current remaining days will be obtained**
-
-```
-import datedays
-
-if __name__ == '__main__':
-    print(datedays.getcurrent_days())
-```
-
-```
-['2022-08-05', '2022-08-06',... '2022-08-30', '2022-08-31']
-```
-
-For Example 3:
-
-**Return to the next month date list (automatically cross year)**
-
-```
-import datedays
-
-if __name__ == '__main__':
-    print(datedays.getnext_days())
-```
-
-```
-['2022-09-01', '2022-09-02', ... '2022-09-29', '2022-09-30']
-```
+method| desc
+--- | :---:
+datedays.getdays()[1:31] |Date within 30 days(From tomorrow)
+datedays.getcurrent_days() | Get the remaining days of this month（Including today）
+datedays.getnext_days() | Get all dates of the next month
