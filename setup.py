@@ -5,11 +5,15 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="datedays",
-    version="2.1.5",
+    version="2.1.7",
     author="liang1024",
-    author_email="11751155@qq.com",
-    description="Welcome to install and use datedays",
-    long_description="Get the list of days,   For example:    ['2022-08-05','2022-08-06','2022-08-07', ...]。   pip install datedays",
+    author_email="chinalzge@gmail.com",
+    description="Python Date Tools",
+    long_description="# What can it do?   "
+                     " 1. Get common date data   "
+                     " 2. Operating excel report    "
+                     " 3. Perform common encryption signature    "
+                     " 4. Obtain the encrypted signature of the file  ",
     long_description_content_type="text/markdown",
     url="https://github.com/liang1024/datedays",
     packages=setuptools.find_packages(),

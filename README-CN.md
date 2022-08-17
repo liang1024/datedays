@@ -1,4 +1,10 @@
-# datedays
+## 它可以干什么？
+
+* [1.获取常用日期数据](#datadays)
+* [2.操作Excel报表](#excel)
+* [3.进行常用加密签名](#hash)
+* [4.获取文件的加密签名](#file)
+* [5.其他](#other)
 
 **pip安装使用**:
 
@@ -6,14 +12,65 @@
 $ pip install datedays
 ```
 
-python日期工具
-* 因为需要自动获取未来的日期
-* 每次都自动更新，如明天是几月几号，一周之后又是多少
-* 或者需要2天后—10天内的所有日期，获取下个月所有日期等等。
+### 还在持续更新中...
+
+## 1.获取常用日期数据
+
+方法| 描述| 返回结果| 参数<a id="datadays"></a>
+:---: | :---:| :---:| :---:
+getnow() |获取今天日期|比如：2022-08-16 17:56:17|
+gettomorrow() |明天|2022-08-17|可选未来第几天(传入想要的数字即可)
+getyesterday()|昨天|2022-08-15|可选过去第几天(传入想要的数字即可)
+getdays() |默认三个月内的日期集合|...(建议测试打印)|number=想要的月份数量
+getnowtimestamp() |获取当前时间戳|1660644568238|默认毫秒(可选秒，毫秒，微秒)
+gettodaydays() |默认获取本月剩余天数集合|...(建议测试打印)|可以指定某月份某一天，获取当月剩余天数
+getnextdays() |默认获取下月总天数集合|...(建议测试打印)|可以指定月份，指定月份数量
+getstr2timestamp() |日期字符串转时间戳|...(建议测试打印)|参数1：日期，参数2：日期的格式
+
+## 2.操作Excel报表
+
+方法| 描述| 返回结果| 参数<a id="excel"></a>
+:---: | :---:| :---:| :---:
+excel_write_openpyxl() |写入Excel报表|...(建议测试)|filename:文件名，datas：要保存的数据,格式:[[第一行],[第二行],[第三行]...]
+excel_read_openpyxl() |读取Excel报表|...(建议测试)|filename:文件名，sheet_index：sheet的下标
+excel_read_xlrd() |读取Excel报表(支持xls)|...(建议测试)|filename:文件名，sheet_index：sheet的下标
+
+## 3.进行常用加密签名
+
+方法| 描述| 返回结果| 参数<a id="hash"></a>
+:---: | :---:| :---:| :---:
+md2() |MD2加密|...(建议测试)|body:加密内容，encode：编码格式
+md5() |MD5加密|...(默认32位结果)|body:加密内容，encode：编码格式，length_：返回长度，可选16
+sha1() |SHA1加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_224() |SHA2_224加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_256() |SHA2_256加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_384() |SHA2_384加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_512() |SHA2_512加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_224() |SHA3_224加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_256() |SHA3_256加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_384() |SHA3_384加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_512() |SHA3_512加密|...(建议测试)|body:加密内容，encode：编码格式
+
+## 4.获取文件的加密签名
+
+方法| 描述| 返回结果| 参数<a id="file"></a>
+:---: | :---:| :---:| :---:
+encrypt_smallfile() |加密小文件|...(建议测试)|filename:文件名，mode：默认md5(可选上面的加密)
+encrypt_bigfile() |加密大文件|...(建议测试)|filename:文件名，mode：默认md5(可选上面的加密)
+
+## 其他...
+
+Method | description | return result | parameter <a id = "other"></a>
+:---: | :---:| :---:| :---:
+getuuid() | 获取uuid(支持1,3,4,5) |... (recommended test) | mode:默认 uuid4,merge:去掉'-'
+getrandompassword() | 随机生成密码串 |... (recommended test) | k: 返回长度(默认12), more_characters: 拼接字符,推荐 !@#$%.*&+-
+
+[英文介绍文档](https://github.com/liang1024/datedays/blob/main/README.md)
 
 例子：
 
 **获取2天后-10天之内的日期列表：**
+
 ```
 import datedays
  
@@ -26,12 +83,7 @@ if __name__ == '__main__':
 ```
 ['2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14', '2022-08-15', '2022-08-16', '2022-08-17', '2022-08-18']
 ```
-其他方法：
 
-方法| 结果
---- | :---:
-datedays.getdays()[1:31] |获取明天起，三十天内的日期
-datedays.getcurrent_days() | 获取本月剩余天数（包含今天）
-datedays.getnext_days() | 获取下个月所有日期
+希望它能帮到你 ！
 
-欢迎各位巨佬使用与反馈。
+
