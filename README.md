@@ -1,5 +1,4 @@
 # datedays
-
 ## What can it do?
 
 * [1. Get common date data](#datadays)
@@ -8,11 +7,13 @@
 * [4. Obtain the encrypted signature of the file](#file)
 * [5. Other](#other)
 
+
 datedays is available on PyPI:
 
 ```console
 $ pip install datedays
 ```
+[中文文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
 
 ### Still updating
 
@@ -67,7 +68,7 @@ Method | description | return result | parameter <a id = "other"></a>
 getuuid() | get uuid(support1,3,4,5) |... (recommended test) | mode:default uuid4,merge:replace('-', '')
 getrandompassword() | randomly generated password |... (recommended test) | k: result length, more_characters: recommended !@#$%.*&+-
 
-[中文介绍文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
+
 
 **For Example**:
 
