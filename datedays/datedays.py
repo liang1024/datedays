@@ -20,13 +20,16 @@ I hope it can help you
 __author__ = 'liang1024'
 __email__ = "chinalzge@gmail.com"
 
+import base64
 import calendar
+import datetime
 import random
 import string
 import time
 import traceback
 import uuid
 from datetime import date
+from urllib.parse import urlencode, quote, unquote
 
 import openpyxl
 import xlrd
@@ -78,6 +81,17 @@ def getdays(number=3):
     for _ in range(1, number + 1):
         _days += getnextdays(next_months=_)
     return _days
+
+
+def getasctime(t=None):
+    '''
+
+    :param t: specify timestamp
+    :return: such as Wed Aug 17 08:54:46 2022
+    '''
+    if t:
+        time.asctime(time.gmtime(t))
+    return time.asctime()
 
 
 def getnowtimestamp(t=1000):
@@ -148,12 +162,12 @@ def getnextdays(today=None, next_months=1):
     return _list
 
 
-def getstr2timestamp(date_str, format_='%Y-%m-%d'):
+def getstr2timestamp(date_str, format_='%Y-%m-%d %H:%M:%S'):
     '''
-    %Y-%m-%d %H:%M:%S
+    string to timestamp
 
-    :param date_str: for example 2022-08-15
-    :param format_: for example '%Y-%m-%d'
+    :param date_str: such as 2022-08-17 16:34:24
+    :param format_: such as %Y-%m-%d %H:%M:%S
     :return: timestamp
     '''
     return int(time.mktime(time.strptime(date_str, format_)))
@@ -498,3 +512,54 @@ def getrandompassword(k=12, more_characters=None, _=string.ascii_letters + strin
     if k > len(_):
         k = len(_)
     return ''.join(random.sample(_, k))
+
+
+def gettimestamp2str(timestamp):
+    '''
+    timestamp to string
+
+    :param timestamp:  such as 1660726667690
+    :return: %Y-%m-%d %H:%M:%S
+    '''
+    return datetime.datetime.fromtimestamp(float(timestamp))
+
+
+def base64_encode(s, urlsafe=False):
+    if urlsafe:
+        return base64.urlsafe_b64encode(s)
+    return base64.b64encode(s)
+
+
+def base64_decode(s, urlsafe=False):
+    if urlsafe:
+        return base64.urlsafe_b64decode(s)
+    return base64.b64decode(s)
+
+
+def urlencodes(body):
+    if isinstance(body, dict):
+        return urlencode(body)
+    return quote(str(body))
+
+
+def urldecodes(body):
+    return unquote(body)
+
+
+def getstartend(start_date, end_date=date.today(), list_=False):
+    '''
+    get interval days or days list
+
+    :param start_date: %Y-%m-%d
+    :param end_date: %Y-%m-%d , default today
+    :param list_: datelist
+    :return:
+    '''
+
+    s_ = [int(_) for _ in str(start_date).split('-')]
+    e_ = [int(_) for _ in str(end_date).split('-')]
+    s_d = date(s_[0], s_[1], s_[2])
+    days = (date(e_[0], e_[1], e_[2]) - s_d).days
+    if list_:
+        return [(s_d + datetime.timedelta(days=_)).strftime('%Y-%m-%d') for _ in range(days + 1)]
+    return days

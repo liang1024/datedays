@@ -11,6 +11,38 @@
 ```console
 $ pip install datedays
 ```
+例子：
+```python
+import datedays
+
+if __name__ == '__main__':
+    print("现在时间：", datedays.getnow())  # format_=格式,比如：%Y-%m-%d %H:%M:%S
+    print('-' * 30)
+    print("明天：", datedays.gettomorrow())
+    print("后天：", datedays.gettomorrow(days=2))  # days等于多少，就是多少天
+    print("30天后是几号：", datedays.gettomorrow(days=30))
+    print("180天后是几月几号：", datedays.gettomorrow(days=180))
+    print("1000天后是几月几号：", datedays.gettomorrow(days=1000))
+    print('-' * 30)
+    print("昨天：", datedays.getyesterday())
+    print("前天：", datedays.getyesterday(days=2))
+    print("180天前：", datedays.getyesterday(days=180))
+    print("1000天前是几月几号：", datedays.getyesterday(days=1000))
+```
+```
+现在时间： 2022-08-19 15:06:33
+------------------------------
+明天： 2022-08-20
+后天： 2022-08-21
+30天后是几号： 2022-09-18
+180天后是几月几号： 2023-02-15
+1000天后是几月几号： 2025-05-15
+------------------------------
+昨天： 2022-08-18
+前天： 2022-08-17
+180天前： 2022-02-20
+1000天前是几月几号： 2019-11-23
+```
 
 ### 还在持续更新中...
 
@@ -19,13 +51,16 @@ $ pip install datedays
 方法| 描述| 返回结果| 参数<a id="datadays"></a>
 :---: | :---:| :---:| :---:
 getnow() |获取今天日期|比如：2022-08-16 17:56:17|
-gettomorrow() |明天|2022-08-17|可选未来第几天(传入想要的数字即可)
-getyesterday()|昨天|2022-08-15|可选过去第几天(传入想要的数字即可)
+gettomorrow() |明天|2022-08-17|参数1：可选未来第几天(传入想要的数字)
+getyesterday()|昨天|2022-08-15|参数1：可选过去第几天(传入想要的数字)
 getdays() |默认三个月内的日期集合|...(建议测试打印)|number=想要的月份数量
+getasctime() |获取格式化时间|比如:Wed Aug 17 17:08:37 2022|参数1:指定时间戳
 getnowtimestamp() |获取当前时间戳|1660644568238|默认毫秒(可选秒，毫秒，微秒)
 gettodaydays() |默认获取本月剩余天数集合|...(建议测试打印)|可以指定某月份某一天，获取当月剩余天数
 getnextdays() |默认获取下月总天数集合|...(建议测试打印)|可以指定月份，指定月份数量
 getstr2timestamp() |日期字符串转时间戳|...(建议测试打印)|参数1：日期，参数2：日期的格式
+gettimestamp2str() |时间戳转日期字符串|...(建议测试打印)|参数1：时间戳
+getstartend() |计算日期之间的间隔天数|...(建议测试打印)|参数1：开始日期，参数2：结束日期（默认当天）参数3：返回日期列表
 
 ## 2.操作Excel报表
 

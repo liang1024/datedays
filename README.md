@@ -13,8 +13,41 @@ datedays is available on PyPI:
 ```console
 $ pip install datedays
 ```
-[中文文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
+**for example**:
 
+```python
+import datedays
+
+if __name__ == '__main__':
+    print('now :', datedays.getnow())  # format_=Format such as:%Y-%m-%d %H:%M:%S
+    print('-' * 30)
+    print('tomorrow:', datedays.gettomorrow())
+    print('the day after tomorrow:', datedays.gettomorrow(days=2))  # Days is the number of days
+    print('after 30 days:', datedays.gettomorrow(days=30))
+    print('after 180 days:', datedays.gettomorrow(days=180))
+    print('after 1000 days:', datedays.gettomorrow(days=1000))
+    print('-' * 30)
+    print('yesterday:', datedays.getyesterday())
+    print('the day before yesterday:', datedays.getyesterday(days=2))
+    print('180 days ago:', datedays.getyesterday(days=180))
+    print('1000 days ago:', datedays.getyesterday(days=1000))
+```
+
+```
+now : 2022-08-19 15:13:44
+------------------------------
+tomorrow: 2022-08-20
+the day after tomorrow: 2022-08-21
+after 30 days: 2022-09-18
+after 180 days: 2023-02-15
+after 1000 days: 2025-05-15
+------------------------------
+yesterday: 2022-08-18
+the day before yesterday: 2022-08-17
+180 days ago: 2022-02-20
+1000 days ago: 2019-11-23
+```
+[中文文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
 ### Still updating
 
 ## 1. Get common date data
@@ -29,6 +62,8 @@ getnowtimestamp() | get the current timestamp | 1660644568238 | default millisec
 gettodaydays() | get the set of remaining days of this month by default |... (it is recommended to test and print) | you can specify a day of a month to get the remaining days of the month
 getnextdays() | get the total number of days of the next month by default |... (test printing is recommended) | you can specify the month and the number of months
 getstr2timestamp() | date string to timestamp |... (test printing is recommended) | parameter 1: date, parameter 2: date format
+gettimestamp2str() | timestamp to date string |... (test printing is recommended) | parameter 1:timestamp
+getstartend() | get interval days or days list |... (test printing is recommended) | parameter 1:start date, parameter 2:end date parameter 3:return list
 
 ## 2. Operate excel report
 
@@ -70,7 +105,7 @@ getrandompassword() | randomly generated password |... (recommended test) | k: r
 
 
 
-**For Example**:
+**For Example**
 
 all dates within 2 days to 10 days
 
@@ -81,7 +116,7 @@ if __name__ == '__main__':
     print(datedays.getdays()[2:10]) 
 ```
 
-output:
+output
 
 ```
 ['2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14', '2022-08-15', '2022-08-16', '2022-08-17', '2022-08-18']
