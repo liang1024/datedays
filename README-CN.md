@@ -11,7 +11,9 @@
 ```console
 $ pip install datedays
 ```
+
 例子：
+
 ```python
 import datedays
 
@@ -29,6 +31,7 @@ if __name__ == '__main__':
     print("180天前：", datedays.getyesterday(days=180))
     print("1000天前是几月几号：", datedays.getyesterday(days=1000))
 ```
+
 ```
 现在时间： 2022-08-19 15:06:33
 ------------------------------
