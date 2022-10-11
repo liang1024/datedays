@@ -1,6 +1,11 @@
 """
+
+@productname：PyCharm
+@projectname：datedays
+@filename：datedays
 @time: 2022/8/5 15:00
-@desc
+@author：liang1024
+@desc：
 
 Python Date Tools
 
@@ -16,9 +21,8 @@ I hope it can help you
             --liang1024
 
 """
-
-__author__ = 'liang1024'
 __email__ = "chinalzge@gmail.com"
+__author__ = 'liang1024'
 
 import base64
 import calendar
@@ -176,7 +180,7 @@ def getstr2timestamp(date_str, format_='%Y-%m-%d %H:%M:%S'):
 def getcurrent_days(current_date=None):
     '''
     old function
-    recommended datedays.get_todaydays()
+    recommended datedays.gettodaydays()
 
     :param current_date:'%Y-%m-%d'
     :return:
@@ -187,7 +191,7 @@ def getcurrent_days(current_date=None):
 def getnext_days(current_date=None, next_months=1):
     '''
     old function
-    recommended datedays.get_nextdays()
+    recommended datedays.getnextdays()
 
     :param current_date: '%Y-%m-%d'
     :param next_months:
@@ -533,7 +537,7 @@ def base64_encode(s, urlsafe=False):
 def base64_decode(s, urlsafe=False):
     if urlsafe:
         return base64.urlsafe_b64decode(s)
-    return base64.b64decode(s)
+    return base64.b64decode(s).decode('utf-8')
 
 
 def urlencodes(body):
@@ -563,3 +567,33 @@ def getstartend(start_date, end_date=date.today(), list_=False):
     if list_:
         return [(s_d + datetime.timedelta(days=_)).strftime('%Y-%m-%d') for _ in range(days + 1)]
     return days
+
+
+def headers2dict(headers_string):
+    '''
+    copy headers string convert dict
+    :param headers_string:
+    :return:
+    '''
+    _dict = {}
+    if headers_string:
+        for h in [h if len(h) == 2 else None for h in [h.split(':', 1) for h in headers_string.splitlines()]]:
+            if h:
+                _dict[h[0].strip()] = h[1].strip()
+    return _dict
+
+
+if __name__ == '__main__':
+    print(headers2dict('''
+    Accept: application/json, text/javascript, */*; q=0.01
+    Accept-Encoding: gzip, deflate, br
+    Accept-Language: zh-CN,zh;q=0.9
+    Cache-Control: no-cache
+    Connection: keep-alive
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+    Pragma: no-cache
+    Sec-Fetch-Mode: cors
+    Sec-Fetch-Site: same-origin
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+    X-Requested-With: XMLHttpRequest
+    '''))

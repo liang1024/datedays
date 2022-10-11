@@ -64,6 +64,7 @@ getnextdays() | get the total number of days of the next month by default |... (
 getstr2timestamp() | date string to timestamp |... (test printing is recommended) | parameter 1: date, parameter 2: date format
 gettimestamp2str() | timestamp to date string |... (test printing is recommended) | parameter 1:timestamp
 getstartend() | get interval days or days list |... (test printing is recommended) | parameter 1:start date, parameter 2:end date parameter 3:return list
+headers2dict() | copy headers string convert dict |... (test printing is recommended) | parameter 1: headers string
 
 ## 2. Operate excel report
 
