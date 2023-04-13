@@ -27,8 +27,11 @@ __author__ = 'liang1024'
 import base64
 import calendar
 import datetime
+import logging
+import os
 import random
 import string
+import sys
 import time
 import traceback
 import uuid
@@ -581,6 +584,51 @@ def headers2dict(headers_string):
             if h:
                 _dict[h[0].strip()] = h[1].strip()
     return _dict
+
+
+def logger(txt=None, base_name=None, file_name='log.txt', log_base=None,
+           fmt=f'%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+           mode='a',
+           encoding='utf-8'):
+    '''logger'''
+
+    if not base_name:
+        base_name = os.path.basename(sys.argv[0]).split('.')[0]
+
+    if not log_base:
+        arg = sys.argv[0]
+        log_base = arg[:arg.rfind('/')]
+        # log_base = arg[:arg[:arg.rfind('/')].rfind('/')]
+
+    date_dir = f"{log_base}/log/{base_name}/{datetime.date.today().strftime('%Y-%m-%d')}"
+
+    if not os.path.exists(date_dir):
+        print(f'logger create dir:{date_dir}')
+        os.makedirs(date_dir)
+
+    logger = logging.getLogger(base_name)
+
+    formatter = logging.Formatter(fmt)
+
+    # filehandler
+    fh = logging.FileHandler(f'{date_dir}/{file_name}', mode=mode, encoding=encoding)
+    fh.setFormatter(formatter)
+
+    # consolehandler
+    ch = logging.StreamHandler()
+    ch.setFormatter(formatter)
+
+    # add handler
+    logger.addHandler(fh)
+    logger.addHandler(ch)
+
+    # set level=debug
+    logger.setLevel(logging.DEBUG)
+
+    if txt:
+        logger.debug(txt)
+
+    return logger
 
 
 if __name__ == '__main__':
