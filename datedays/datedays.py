@@ -591,39 +591,39 @@ def logger(txt=None, base_name=None, file_name='log.txt', log_base=None,
            mode='a',
            encoding='utf-8'):
     '''logger'''
-
-    if not base_name:
-        base_name = os.path.basename(sys.argv[0]).split('.')[0]
-
-    if not log_base:
-        arg = sys.argv[0]
-        log_base = arg[:arg.rfind('/')]
-        # log_base = arg[:arg[:arg.rfind('/')].rfind('/')]
-
-    date_dir = f"{log_base}/log/{base_name}/{datetime.date.today().strftime('%Y-%m-%d')}"
-
-    if not os.path.exists(date_dir):
-        print(f'logger create dir:{date_dir}')
-        os.makedirs(date_dir)
-
     logger = logging.getLogger(base_name)
 
-    formatter = logging.Formatter(fmt)
+    if not logger.handlers:
+        if not base_name:
+            base_name = os.path.basename(sys.argv[0]).split('.')[0]
 
-    # filehandler
-    fh = logging.FileHandler(f'{date_dir}/{file_name}', mode=mode, encoding=encoding)
-    fh.setFormatter(formatter)
+        if not log_base:
+            arg = sys.argv[0]
+            log_base = arg[:arg.rfind('/')]
+            # log_base = arg[:arg[:arg.rfind('/')].rfind('/')]
 
-    # consolehandler
-    ch = logging.StreamHandler()
-    ch.setFormatter(formatter)
+        date_dir = f"{log_base}/log/{base_name}/{datetime.date.today().strftime('%Y-%m-%d')}"
 
-    # add handler
-    logger.addHandler(fh)
-    logger.addHandler(ch)
+        if not os.path.exists(date_dir):
+            print(f'logger create dir:{date_dir}')
+            os.makedirs(date_dir)
 
-    # set level=debug
-    logger.setLevel(logging.DEBUG)
+        formatter = logging.Formatter(fmt)
+
+        # filehandler
+        fh = logging.FileHandler(f'{date_dir}/{file_name}', mode=mode, encoding=encoding)
+        fh.setFormatter(formatter)
+
+        # consolehandler
+        ch = logging.StreamHandler()
+        ch.setFormatter(formatter)
+
+        # add handler
+        logger.addHandler(fh)
+        logger.addHandler(ch)
+
+        # set level=debug
+        logger.setLevel(logging.DEBUG)
 
     if txt:
         logger.debug(txt)
