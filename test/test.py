@@ -31,3 +31,6 @@ if __name__ == '__main__':
     User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
     X-Requested-With: XMLHttpRequest
     '''))
+    cookie1 = 'JSESSIONID=123456789; key1=jiuliang; key2=2023; key3=1538; '
+    cookie2 = 'JSESSIONID=123456789; key1=jiuliang; key4=0818; '
+    print(datedays.cookie_difference(cookie1, cookie2))

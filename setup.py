@@ -11,7 +11,7 @@ with open("README-EN.md", "r") as f:
 
 setuptools.setup(
     name="datedays",
-    version="2.2.7",
+    version="2.2.8",
     author="JiuLiang",
     author_email="jiuliange@foxmail.com",
     description="Python Date Tools",

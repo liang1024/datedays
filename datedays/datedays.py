@@ -673,5 +673,4 @@ def cookie_difference(cookie_str1, cookie_str2):
     keys2 = []
     for items in [item.split('=') for item in str(cookie_str2).split('; ')]:
         keys2.append(items[0])
-
-    return list(set(keys1) - set(keys2))
+    return [list(set(keys1) - set(keys2)), list(set(keys2) - set(keys1))]
