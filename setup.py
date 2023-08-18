@@ -11,9 +11,9 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="datedays",
-    version="2.2.4",
-    author="liang1024",
-    author_email="chinalzge@gmail.com",
+    version="2.2.7",
+    author="JiuLiang",
+    author_email="jiuliange@foxmail.com",
     description="Python Date Tools",
     long_description=readme,
     long_description_content_type="text/markdown",

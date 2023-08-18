@@ -105,6 +105,7 @@ getuuid() | 获取uuid(支持1,3,4,5) |... (recommended test) | mode:默认 uuid
 getrandompassword() | 随机生成密码串 |... (recommended test) | k: 返回长度(默认12), more_characters: 拼接字符,推荐 !@#$%.*&+-
 
 [英文介绍文档](https://github.com/liang1024/datedays/blob/main/README.md)
+[中文文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
 
 例子：
 

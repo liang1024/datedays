@@ -1,6 +1,5 @@
 # datedays
 
-[中文文档](https://github.com/liang1024/datedays/blob/main/README-CN.md)
 
 ## What can it do?
 
