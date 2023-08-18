@@ -1,127 +1,128 @@
-# datedays
+## 它可以干什么？
 
+* [1.获取常用日期数据](#datadays)
+* [2.操作Excel报表](#excel)
+* [3.进行常用加密签名](#hash)
+* [4.获取文件的加密签名](#file)
+* [5.其他](#other)
 
-## What can it do?
-
-* [1. Get common date data](#datadays)
-* [2. Operating excel report](#excel)
-* [3. Perform common encryption signature](#hash)
-* [4. Obtain the encrypted signature of the file](#file)
-* [5. Other](#other)
-
-datedays is available on PyPI:
+**pip安装使用**:
 
 ```console
 $ pip install datedays
 ```
 
-**for example**:
+例子：
 
 ```python
 import datedays
 
 if __name__ == '__main__':
-    print('now :', datedays.getnow())  # format_=Format such as:%Y-%m-%d %H:%M:%S
+    print("现在时间：", datedays.getnow())  # format_=格式,比如：%Y-%m-%d %H:%M:%S
     print('-' * 30)
-    print('tomorrow:', datedays.gettomorrow())
-    print('the day after tomorrow:', datedays.gettomorrow(days=2))  # Days is the number of days
-    print('after 30 days:', datedays.gettomorrow(days=30))
-    print('after 180 days:', datedays.gettomorrow(days=180))
-    print('after 1000 days:', datedays.gettomorrow(days=1000))
+    print("明天：", datedays.gettomorrow())
+    print("后天：", datedays.gettomorrow(days=2))  # days等于多少，就是多少天
+    print("30天后是几号：", datedays.gettomorrow(days=30))
+    print("180天后是几月几号：", datedays.gettomorrow(days=180))
+    print("1000天后是几月几号：", datedays.gettomorrow(days=1000))
     print('-' * 30)
-    print('yesterday:', datedays.getyesterday())
-    print('the day before yesterday:', datedays.getyesterday(days=2))
-    print('180 days ago:', datedays.getyesterday(days=180))
-    print('1000 days ago:', datedays.getyesterday(days=1000))
+    print("昨天：", datedays.getyesterday())
+    print("前天：", datedays.getyesterday(days=2))
+    print("180天前：", datedays.getyesterday(days=180))
+    print("1000天前是几月几号：", datedays.getyesterday(days=1000))
 ```
 
 ```
-now : 2022-08-19 15:13:44
+现在时间： 2022-08-19 15:06:33
 ------------------------------
-tomorrow: 2022-08-20
-the day after tomorrow: 2022-08-21
-after 30 days: 2022-09-18
-after 180 days: 2023-02-15
-after 1000 days: 2025-05-15
+明天： 2022-08-20
+后天： 2022-08-21
+30天后是几号： 2022-09-18
+180天后是几月几号： 2023-02-15
+1000天后是几月几号： 2025-05-15
 ------------------------------
-yesterday: 2022-08-18
-the day before yesterday: 2022-08-17
-180 days ago: 2022-02-20
-1000 days ago: 2019-11-23
+昨天： 2022-08-18
+前天： 2022-08-17
+180天前： 2022-02-20
+1000天前是几月几号： 2019-11-23
 ```
 
-### Still updating
+### 还在持续更新中...
 
-## 1. Get common date data
+## 1.获取常用日期数据
 
-Method | description | return result | parameter<a id = "datadays"></a>
+方法| 描述| 返回结果| 参数<a id="datadays"></a>
 :---: | :---:| :---:| :---:
-getnow() | get today's date | for example: 2022-08-16 17:56:17|
-gettomorrow() | tomorrow | 2022-08-17 | select the next day (just pass in the number you want)
-getyesterday() | yesterday | 2022-08-15 | select the last day (just pass in the desired number)
-getdays() | default date list within three months |... (test printing is recommended) | number = number of months you want
-getnowtimestamp() | get the current timestamp | 1660644568238 | default milliseconds (optional seconds, milliseconds, microseconds)
-gettodaydays() | get the list of remaining days of this month by default |... (it is recommended to test and print) | you can specify a day of a month to get the remaining days of the month
-getnextdays() | get the total number of days of the next month by default |... (test printing is recommended) | you can specify the month and the number of months
-getstr2timestamp() | date string to timestamp |... (test printing is recommended) | parameter 1: date, parameter 2: date format
-gettimestamp2str() | timestamp to date string |... (test printing is recommended) | parameter 1:timestamp
-getstartend() | get interval days or days list |... (test printing is recommended) | parameter 1:start date, parameter 2:end date parameter 3:return list
-headers2dict() | copy headers string convert dict |... (test printing is recommended) | parameter 1: headers string
+getnow() |获取今天日期|比如：2022-08-16 17:56:17|
+gettomorrow() |明天|2022-08-17|参数1：可选未来第几天(传入想要的数字)
+getyesterday()|昨天|2022-08-15|参数1：可选过去第几天(传入想要的数字)
+getdays() |默认三个月内的日期列表|...(建议测试打印)|number=想要的月份数量
+getasctime() |获取格式化时间|比如:Wed Aug 17 17:08:37 2022|参数1:指定时间戳
+getnowtimestamp() |获取当前时间戳|1660644568238|默认毫秒(可选秒，毫秒，微秒)
+gettodaydays() |默认获取本月剩余天数列表|...(建议测试打印)|可以指定某月份某一天，获取当月剩余天数
+getnextdays() |默认获取下月总天数列表|...(建议测试打印)|可以指定月份，指定月份数量
+getstr2timestamp() |日期字符串转时间戳|...(建议测试打印)|参数1：日期，参数2：日期的格式
+gettimestamp2str() |时间戳转日期字符串|...(建议测试打印)|参数1：时间戳
+getstartend() |计算日期之间的间隔天数|...(建议测试打印)|参数1：开始日期，参数2：结束日期（默认当天）参数3：返回日期列表
 
-## 2. Operate excel report
+## 2.操作Excel报表
 
-Method | description | return result | parameter<a id = "excel"></a>
+方法| 描述| 返回结果| 参数<a id="excel"></a>
 :---: | :---:| :---:| :---:
-excel_write_openpyxl() | write excel report |... (recommended test) | filename: file name, data: data to be saved, format: [first line], [second line], [Third Line]...]
-excel_read_openpyxl() | read excel report |... (recommended test) | filename: filename, sheet_ Index: subscript of sheet
-excel_read_xlrd() | read excel report (support XLS) |... (recommended test) | filename: filename, sheet_ Index: subscript of sheet
+excel_write_openpyxl() |写入Excel报表|...(建议测试)|filename:文件名，datas：要保存的数据,格式:[[第一行],[第二行],[第三行]...]
+excel_read_openpyxl() |读取Excel报表|...(建议测试)|filename:文件名，sheet_index：sheet的下标
+excel_read_xlrd() |读取Excel报表(支持xls)|...(建议测试)|filename:文件名，sheet_index：sheet的下标
 
-## 3. Perform common encryption signature
+## 3.进行常用加密签名
 
-Method | description | return result | parameter <a id = "hash"></a>
+方法| 描述| 返回结果| 参数<a id="hash"></a>
 :---: | :---:| :---:| :---:
-md2() | MD2 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-md5() | MD5 encryption |... (default 32-bit result) | body: encrypted content, encode: encoding format, length_: Return length, optional 16
-sha1() | SHA1 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha2_224() |SHA2_224 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha2_256() |SHA2_256 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha2_384() |SHA2_384 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha2_512() |SHA2_512 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha3_224() |SHA3_224 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha3_256() |SHA3_256 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha3_384() |SHA3_384 encryption |... (recommended test) | body: encrypted content, encode: encoding format
-sha3_512() |SHA3_512 encryption |... (recommended test) | body: encrypted content, encode: encoding format
+md2() |MD2加密|...(建议测试)|body:加密内容，encode：编码格式
+md5() |MD5加密|...(默认32位结果)|body:加密内容，encode：编码格式，length_：返回长度，可选16
+sha1() |SHA1加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_224() |SHA2_224加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_256() |SHA2_256加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_384() |SHA2_384加密|...(建议测试)|body:加密内容，encode：编码格式
+sha2_512() |SHA2_512加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_224() |SHA3_224加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_256() |SHA3_256加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_384() |SHA3_384加密|...(建议测试)|body:加密内容，encode：编码格式
+sha3_512() |SHA3_512加密|...(建议测试)|body:加密内容，encode：编码格式
 
-## 4. Obtain the encrypted signature of the file
+## 4.获取文件的加密签名
 
-Method | description | return result | parameter <a id = "file"></a>
+方法| 描述| 返回结果| 参数<a id="file"></a>
 :---: | :---:| :---:| :---:
-encrypt_smallfile() | encrypt small files |... (recommended test) | filename: filename, mode: default MD5 (optional encryption above)
-encrypt_bigfile() | encrypt large files |... (recommended test) | filename: filename, mode: default MD5 (optional encryption above)
+encrypt_smallfile() |加密小文件|...(建议测试)|filename:文件名，mode：默认md5(可选上面的加密)
+encrypt_bigfile() |加密大文件|...(建议测试)|filename:文件名，mode：默认md5(可选上面的加密)
 
-## Other...
+## 其他...
 
 Method | description | return result | parameter <a id = "other"></a>
 :---: | :---:| :---:| :---:
-getuuid() | get uuid(support1,3,4,5) |... (recommended test) | mode:default uuid4,merge:replace('-', '')
-getrandompassword() | randomly generated password |... (recommended test) | k: result length, more_characters: recommended !@#$%.*&+-
+getuuid() | 获取uuid(支持1,3,4,5) |... (recommended test) | mode:默认 uuid4,merge:去掉'-'
+getrandompassword() | 随机生成密码串 |... (recommended test) | k: 返回长度(默认12), more_characters: 拼接字符,推荐 !@#$%.*&+-、
+headers2dict() |headers字符串转dict|...(建议测试打印)|参数1：headers字符串
+getrandomphone() |获取随机手机号|...(建议测试打印)|
+cookie_difference() |比较两个cookie的不同|...(建议测试打印)|
 
-**For Example**
+例子：
 
-all dates within 2 days to 10 days
+**获取2天后-10天之内的日期列表：**
 
 ```
 import datedays
-
+ 
 if __name__ == '__main__':
-    print(datedays.getdays()[2:10]) 
+    print(datedays.getdays()[2:10])  # 2天之后，10天之内的日期列表
 ```
 
-output
+结果：
 
 ```
 ['2022-08-11', '2022-08-12', '2022-08-13', '2022-08-14', '2022-08-15', '2022-08-16', '2022-08-17', '2022-08-18']
 ```
 
-I hope it can help you!
+希望它能帮到你 ！
+[English Introduction Document](https://github.com/liang1024/datedays/blob/main/README-CN.md)
 

@@ -6,7 +6,7 @@ requires = [
     "pycryptodomex>=3.15.0",
     "python-dateutil>=2.8.2",
 ]
-with open("README.md", "r") as f:
+with open("README-EN.md", "r") as f:
     readme = f.read()
 
 setuptools.setup(
